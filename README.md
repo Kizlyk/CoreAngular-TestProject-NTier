@@ -15,4 +15,6 @@ Visual Studio 2017 is required to build this solution. You might need to do all 
 ### Notes on architecture
 **Repository** and **Unit of Work** patterns in DAL layer are not implemented, considering that Entity Framework DBContext implements both. This additional layer of abstraction can be added if needed
 
-**/api/products** server endpoint implements OData for filtering, sorting, paging etc. (https://www.odata.org/odata-services/). Some examples of its usage are in integration tests.
+**/api/products** server endpoint implements OData wich allows complex filtering, sorting, paging etc. (https://www.odata.org/odata-services/). Some examples of its usage are in integration tests.
+
+Optimistic concurrency control is implemented by adding a Timestamp column to each product
