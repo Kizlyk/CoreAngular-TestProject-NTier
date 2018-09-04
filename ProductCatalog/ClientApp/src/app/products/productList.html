@@ -1,0 +1,60 @@
+<div class="container container-fluid slide-animation" [@slideIn]="'in'">
+
+    <div class="row">
+        <h2 class="col-lg-12">Products</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <form role="search" class="form-inline">
+                <div class="input-group">
+                    <input id="SearchBox" type="text" class="form-control" placeholder="Search" name="searchText"
+                           [(ngModel)]="searchText" />
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit" (click)="searchProducts(searchText)"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-6">
+            <div class="btn-group pull-right">
+                <a class="btn btn-sm btn-default" (click)="exportProducts()"><i class="fa fa-print"></i> Export</a>
+                <a routerLink="/product/edit/0" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Add Product</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="busy">
+        <i class="fa fa-circle-o-notch fa-spin fa-5x"
+           style="display: block; text-align: center; margin-top: 70px;"></i>
+    </div>
+
+    <div class="row" style="margin-top: 20px">
+        <div class="col-lg-12">
+            <div *ngIf="productList.length == 0 && !busy"> No products found </div>
+            <table style="width: 100%;" class="table table-striped table-hover" *ngIf="productList.length > 0">
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th class="text-right">Last Updated</th>
+                </tr>
+                <tr *ngFor="let product of productList"
+                    (click)="productClick(product)">
+                    <td>
+                        {{product.code}}
+                    </td>
+                    <td>
+                        {{product.name}}
+                    </td>
+                    <td>
+                        {{product.price | currency : "USD"}}
+                    </td>
+                    <td class="text-right">
+                        {{product.lastUpdated | date :  "medium"}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

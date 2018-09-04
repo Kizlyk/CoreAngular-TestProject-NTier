@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <h2 class="col-lg-12">Product Details</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="btn-group pull-right">
+                <a routerLink="/products" class="btn btn-sm btn-default"><i class="fa fa-list"></i> Products</a>
+                <a [routerLink]="['/product/edit',product.id]" class="btn btn-sm btn-default"><i class="fa fa-edit"></i> Edit</a>
+                <button (click)="deleteProduct(product)" class="btn btn-sm btn-default"><i class="fa fa-remove"></i> Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px;" [@slideIn]="'in'">
+        <div class="col-sm-4">
+            <img [src]="product.photo" *ngIf="product.photo" class="product-image-big img-responsive" />
+            <img src="../../assets/no-image-icon.png" *ngIf="!product.photo" class="product-image-big img-responsive" />
+        </div>
+        <div class="col-sm-8">
+            <h2>{{product.name}}</h2>
+            <h4>Code: {{product.code}}</h4>
+            <h4>Price: {{product.price | currency : "USD"}}</h4>
+        </div>
+    </div>
+</div>

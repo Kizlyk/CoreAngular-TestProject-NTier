@@ -1,0 +1,63 @@
+<div class="container">
+
+    <div class="row">
+        <h2 *ngIf="product.id !== 0" class="col-lg-12">Edit Product</h2>
+        <h2 *ngIf="product.id == 0" class="col-lg-12">New Product</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="btn-group pull-right">
+                <a routerLink="/products" class="btn btn-sm btn-default"><i class="fa fa-list"></i> Products</a>
+                <a *ngIf="product.id != 0" [routerLink]="['/product',product.id]" class="btn btn-sm btn-default"><i class="fa fa-eye"></i> View</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:20px" [ngClass]="{ 'hidden': !loaded}" [@slideIn]="'in'">
+        <div class="col-lg-12">
+            <form name="form1" action="javascript:{}" #form1="ngForm" novalidate>
+                <div class="form-group">
+                    <label for="productCode">Code</label>
+                    <input id="productCode" type="text" class="form-control input-sm"
+                           placeholder="Product Code"
+                           name="productCode" required
+                           [(ngModel)]="product.code" autofocus />
+                </div>
+                <div class="form-group">
+                    <label for="productName">Name</label>
+                    <input id="productName" type="text" class="form-control input-sm"
+                           placeholder="Product Name"
+                           name="productName" required
+                           [(ngModel)]="product.name" autofocus />
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Price</label>
+                    <input id="productPrice" type="number" class="form-control input-sm"
+                           placeholder="Product Price" autofocus
+                           name="productPrice" required
+                           [(ngModel)]="product.price" #price="ngModel" />
+                </div>
+                <div class="form-group">
+                    <label for="ProductPrice">Image</label>
+                    <div class="input-group">
+                        <span class="input-group-addon" title="Image Url"><i class="fa fa-image fa-fw"></i></span>
+                        <input type="text" class="form-control input-sm" id="ProductPhoto" name="photo"
+                               placeholder="Image Url" [(ngModel)]="product.photo" />
+                    </div>
+                </div>
+                <hr />
+                <div class="btn-group">
+                    <button type="submit" (click)="saveProduct(product)"
+                            class="btn btn-success"
+                            [disabled]="form1.invalid">
+                        <i class="fa fa-check"></i> Save
+                    </button>
+                    <a [routerLink]="product.id != 0 ? ['/product',product.id] : ['/products']" class="btn btn-default">
+                        <i class="fa fa-remove"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
