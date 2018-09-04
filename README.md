@@ -1,6 +1,8 @@
 # CoreAngular-TestProject-NTier
 Test project using ASP.NET Core 2.1 and Angular 6. Classic n-tier architecture with anemic domain model.
 
+**Live Demo** can be viewed here: http://tarastestvm1.westeurope.cloudapp.azure.com:8080 (link is temporary)
+
 ### Building and running solution
 Visual Studio 2017 is required to build this solution. You might need to do all or some of the following:
   - install .net core 2.1 (https://www.microsoft.com/net/download/dotnet-core/2.1)
