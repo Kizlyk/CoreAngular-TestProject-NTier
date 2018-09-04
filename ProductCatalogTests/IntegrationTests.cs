@@ -66,7 +66,7 @@ namespace ProductCatalogTests
             var client = new HttpClient();
             client.BaseAddress = new Uri(websiteBaseURL);
 
-            var response = client.GetAsync("api/products?$").Result;
+            var response = client.GetAsync("api/products?$orderby=price desc&$top=2").Result;
 
             response.EnsureSuccessStatusCode();
             var responseString = response.Content.ReadAsStringAsync().Result;
