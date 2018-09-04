@@ -42,7 +42,7 @@ namespace ProductServices.Services
             var product = _mapper.Map<Product, ProductDTO>(_productContext.Products.FirstOrDefault(p => p.Id == id));
             if (product == null)
             {
-                throw new ArgumentException("Product not found");
+                throw new CustomNotFoundException("Product not found");
             }
             return product;
         }
@@ -52,7 +52,7 @@ namespace ProductServices.Services
             var product = _mapper.Map<Product, ProductDTO>(_productContext.Products.FirstOrDefault(p => p.Code == code));
             if (product == null)
             {
-                throw new ArgumentException("Product not found");
+                throw new CustomNotFoundException("Product not found");
             }
             return product;
         }
